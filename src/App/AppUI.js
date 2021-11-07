@@ -7,19 +7,18 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 
 function AppUI(){
+    const {
+        error,
+        loading,
+        searchedTodos,
+        completeTodo,
+        deleteTodo
+      } = React.useContext(TodoContext);
     return (
     <>
       <TodoCounter />
       <TodoSearch />
-      <TodoContext.Consumer>
-        {({
-          error,
-          loading,
-          searchedTodos,
-          completeTodo,
-          deleteTodo
-        }) => (
-          <TodoList>
+        <TodoList>
             {error && <p>Desespérate, hubo un error...</p>}
             {loading && <p>Estamos cargando, no desesperes...</p>}
             {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
@@ -34,9 +33,6 @@ function AppUI(){
             />
             ))}
           </TodoList>
-        )}
-      </TodoContext.Consumer>
-
       <CreateTodoButton />
     </>
     );

@@ -23,7 +23,7 @@ function useLocalStorage(itemName, initialValue){
         } catch(err) {
           setError(err);
         }
-      }, 1000);
+      }, 5000);
   
     });
   
